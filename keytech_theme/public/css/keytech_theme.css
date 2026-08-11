@@ -1,0 +1,401 @@
+/*
+ * Keytech Theme - Custom Sidebar Styles
+ * Replaces default Frappe sidebar with custom sidebar
+ */
+
+/* ============================
+   1. HIDE DEFAULT FRAPPE SIDEBAR
+   ============================ */
+
+.body-sidebar-container,
+.body-sidebar,
+.standard-sidebar,
+.sidebar-menu,
+.layout-side-section,
+.page-sidebar,
+.page-sidebar-list,
+.desk-sidebar,
+.form-sidebar,
+.list-sidebar,
+.workspace-sidebar {
+    display: none !important;
+}
+
+/* ============================
+   2. FIX MAIN LAYOUT
+   ============================ */
+
+/* Let main-section fill the space */
+.main-section {
+    margin-left: 0 !important;
+    flex: 1 !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.main-section > .page-container {
+    margin-left: 0 !important;
+    flex: 1 !important;
+}
+
+/* Offset when our sidebar is visible */
+body.kt-sidebar-expanded .main-section {
+    margin-left: 240px !important;
+}
+
+body.kt-sidebar-collapsed .main-section {
+    margin-left: 60px !important;
+}
+
+/* ============================
+   3. NEW SIDEBAR
+   ============================ */
+
+#kt-sidebar {
+    position: fixed !important;
+    top: var(--navbar-height, 48px) !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 240px !important;
+    height: calc(100vh - var(--navbar-height, 48px)) !important;
+    background: #fff !important;
+    border-right: 1px solid #e8e8e8 !important;
+    z-index: 1020 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar {
+    width: 60px !important;
+}
+
+/* ============================
+   4. SIDEBAR HEADER
+   ============================ */
+
+#kt-sidebar .kt-sidebar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+    min-height: 56px !important;
+    flex-shrink: 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-title {
+    opacity: 0 !important;
+    width: 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-toggle {
+    background: none !important;
+    border: none !important;
+    padding: 6px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    color: #687178 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-toggle:hover {
+    background: #f4f5f6 !important;
+    color: #1a1a1a !important;
+}
+
+/* ============================
+   5. SIDEBAR BODY
+   ============================ */
+
+#kt-sidebar .kt-sidebar-body {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 8px 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-body::-webkit-scrollbar {
+    width: 4px !important;
+}
+
+#kt-sidebar .kt-sidebar-body::-webkit-scrollbar-thumb {
+    background: #d1d8dd !important;
+    border-radius: 4px !important;
+}
+
+/* ============================
+   6. SIDEBAR MENU
+   ============================ */
+
+#kt-sidebar .kt-sidebar-menu {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+#kt-sidebar .kt-sidebar-item {
+    position: relative !important;
+    display: block !important;
+}
+
+#kt-sidebar .kt-sidebar-link {
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 16px !important;
+    color: #687178 !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
+    gap: 10px !important;
+    border-radius: 0 !important;
+    position: relative !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    line-height: 1.4 !important;
+    cursor: pointer !important;
+}
+
+#kt-sidebar .kt-sidebar-link:hover {
+    background: #f4f5f6 !important;
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+}
+
+#kt-sidebar .kt-sidebar-item.active > .kt-sidebar-link {
+    background: #f0f4ff !important;
+    color: #2490ef !important;
+}
+
+#kt-sidebar .kt-sidebar-item.active > .kt-sidebar-link::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 3px !important;
+    height: 20px !important;
+    background: #2490ef !important;
+    border-radius: 0 3px 3px 0 !important;
+}
+
+/* ============================
+   7. SIDEBAR ICONS
+   ============================ */
+
+#kt-sidebar .kt-sidebar-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+    font-size: 16px !important;
+}
+
+#kt-sidebar .kt-sidebar-icon i {
+    font-size: 16px !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-icon {
+    margin: 0 auto !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-label,
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-chevron,
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-badge,
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
+    display: none !important;
+}
+
+/* ============================
+   8. SIDEBAR LABELS
+   ============================ */
+
+#kt-sidebar .kt-sidebar-label {
+    flex: 1 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* ============================
+   9. SIDEBAR INDICATOR
+   ============================ */
+
+#kt-sidebar .kt-sidebar-indicator {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-indicator.green { background-color: #28a745 !important; }
+#kt-sidebar .kt-sidebar-indicator.orange { background-color: #f0ad4e !important; }
+#kt-sidebar .kt-sidebar-indicator.red { background-color: #dc3545 !important; }
+#kt-sidebar .kt-sidebar-indicator.blue { background-color: #2490ef !important; }
+
+/* ============================
+   10. SIDEBAR BADGES
+   ============================ */
+
+#kt-sidebar .kt-sidebar-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 20px !important;
+    height: 20px !important;
+    padding: 0 6px !important;
+    border-radius: 10px !important;
+    background: #2490ef !important;
+    color: white !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    flex-shrink: 0 !important;
+}
+
+/* ============================
+   11. SIDEBAR CHEVRON
+   ============================ */
+
+#kt-sidebar .kt-sidebar-chevron {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.2s !important;
+    color: #687178 !important;
+}
+
+#kt-sidebar .kt-sidebar-group.expanded > .kt-sidebar-link .kt-sidebar-chevron {
+    transform: rotate(90deg) !important;
+}
+
+/* ============================
+   12. SIDEBAR CHILDREN
+   ============================ */
+
+#kt-sidebar .kt-sidebar-children {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: none !important;
+}
+
+#kt-sidebar .kt-sidebar-group.expanded > .kt-sidebar-children {
+    display: block !important;
+}
+
+#kt-sidebar .kt-sidebar-children .kt-sidebar-link {
+    padding: 8px 16px 8px 30px !important;
+    font-size: 12px !important;
+}
+
+#kt-sidebar .kt-sidebar-children .kt-sidebar-children .kt-sidebar-link {
+    padding: 7px 16px 7px 46px !important;
+}
+
+#kt-sidebar .kt-sidebar-children .kt-sidebar-icon {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 13px !important;
+}
+
+#kt-sidebar .kt-sidebar-children .kt-sidebar-children .kt-sidebar-icon {
+    display: none !important;
+}
+
+/* ============================
+   13. SIDEBAR FOOTER
+   ============================ */
+
+#kt-sidebar .kt-sidebar-footer {
+    border-top: 1px solid #e8e8e8 !important;
+    padding: 12px 16px !important;
+    flex-shrink: 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-user {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+}
+
+#kt-sidebar .kt-sidebar-user-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+}
+
+#kt-sidebar .kt-sidebar-user-avatar img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+#kt-sidebar .kt-sidebar-user-name {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #1a1a1a !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user-name {
+    display: none !important;
+}
+
+/* ============================
+   14. MOBILE
+   ============================ */
+
+.kt-sidebar-overlay {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 1019 !important;
+}
+
+@media (max-width: 768px) {
+    #kt-sidebar {
+        transform: translateX(-100%) !important;
+    }
+
+    body.kt-sidebar-mobile-open #kt-sidebar {
+        transform: translateX(0) !important;
+    }
+
+    body.kt-sidebar-mobile-open .kt-sidebar-overlay {
+        display: block !important;
+    }
+}

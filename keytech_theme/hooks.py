@@ -25,8 +25,8 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/keytech_theme/css/keytech_theme.css"
-# app_include_js = "/assets/keytech_theme/js/keytech_theme.js"
+app_include_css = "/assets/keytech_theme/css/keytech_theme.css"
+app_include_js = "/assets/keytech_theme/js/keytech_theme.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/keytech_theme/css/keytech_theme.css"
@@ -173,10 +173,9 @@ app_license = "mit"
 
 # Overriding Methods
 # ------------------------------
-#
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "keytech_theme.event.get_events"
-# }
+# Note: We intentionally do NOT override frappe.desk.desktop.get_workspace_sidebar_items.
+# We keep Frappe's default workspace routing intact and render a fully custom
+# desk sidebar (#kt-sidebar) driven by keytech_theme.api.get_sidebar_menu.
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
