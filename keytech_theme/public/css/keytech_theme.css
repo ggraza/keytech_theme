@@ -4,20 +4,14 @@
  */
 
 /* ============================
-   1. HIDE DEFAULT FRAPPE SIDEBAR
+   1. HIDE DEFAULT FRAPPE WORKSPACE SIDEBAR
+   (List/Form sidebars are kept intact)
    ============================ */
 
-.body-sidebar-container,
-.body-sidebar,
-.standard-sidebar,
-.sidebar-menu,
-.layout-side-section,
-.page-sidebar,
-.page-sidebar-list,
-.desk-sidebar,
-.form-sidebar,
-.list-sidebar,
-.workspace-sidebar {
+#page-Workspaces .layout-side-section,
+#page-Workspaces .list-sidebar.overlay-sidebar,
+#page-Workspaces .desk-sidebar,
+#page-Workspaces .workspace-sidebar-skeleton {
     display: none !important;
 }
 
@@ -25,27 +19,32 @@
    2. FIX MAIN LAYOUT
    ============================ */
 
-/* Let main-section fill the space */
+/* main-section wraps navbar (<header>), #body and footer.
+   Keep navbar full-width; only offset the content (#body). */
 .main-section {
-    margin-left: 0 !important;
-    flex: 1 !important;
     min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
 }
 
-.main-section > .page-container {
-    margin-left: 0 !important;
+#body {
     flex: 1 !important;
 }
 
-/* Offset when our sidebar is visible */
-body.kt-sidebar-expanded .main-section {
+/* Offset content when our fixed sidebar is visible */
+body.kt-sidebar-expanded #body {
     margin-left: 240px !important;
 }
 
-body.kt-sidebar-collapsed .main-section {
+body.kt-sidebar-collapsed #body {
     margin-left: 60px !important;
+}
+
+@media (max-width: 768px) {
+    body.kt-sidebar-expanded #body,
+    body.kt-sidebar-collapsed #body {
+        margin-left: 0 !important;
+    }
 }
 
 /* ============================

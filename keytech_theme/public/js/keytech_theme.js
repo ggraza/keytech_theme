@@ -11,13 +11,18 @@ keytech_theme = {
 		if (this._initialized) return;
 		this._initialized = true;
 
-		$(document).on("app_ready", () => {
-			this.fetch_and_render();
-		});
 		this.init_toggle();
 
 		if (frappe.router) {
 			frappe.router.on("change", () => this.set_active());
+		}
+
+		// app_ready fires synchronously inside Application.startup(); depending on
+		// $(document).ready handler order it may fire before this listener is bound.
+		if (frappe.app) {
+			this.fetch_and_render();
+		} else {
+			$(document).on("app_ready", () => this.fetch_and_render());
 		}
 	},
 
