@@ -63,7 +63,7 @@ body.kt-sidebar-collapsed #body {
     z-index: 1020 !important;
     display: flex !important;
     flex-direction: column !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04) !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -75,53 +75,7 @@ body.kt-sidebar-collapsed #kt-sidebar {
 }
 
 /* ============================
-   4. SIDEBAR HEADER
-   ============================ */
-
-#kt-sidebar .kt-sidebar-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 16px !important;
-    border-bottom: 1px solid #e8e8e8 !important;
-    min-height: 56px !important;
-    flex-shrink: 0 !important;
-}
-
-#kt-sidebar .kt-sidebar-title {
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: #1a1a1a !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-}
-
-body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-title {
-    opacity: 0 !important;
-    width: 0 !important;
-}
-
-#kt-sidebar .kt-sidebar-toggle {
-    background: none !important;
-    border: none !important;
-    padding: 6px !important;
-    border-radius: 6px !important;
-    cursor: pointer !important;
-    color: #687178 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-}
-
-#kt-sidebar .kt-sidebar-toggle:hover {
-    background: #f4f5f6 !important;
-    color: #1a1a1a !important;
-}
-
-/* ============================
-   5. SIDEBAR BODY
+   4. SIDEBAR BODY
    ============================ */
 
 #kt-sidebar .kt-sidebar-body {
@@ -332,8 +286,11 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
 
 #kt-sidebar .kt-sidebar-footer {
     border-top: 1px solid #e8e8e8 !important;
-    padding: 12px 16px !important;
+    padding: 8px 12px !important;
     flex-shrink: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
 }
 
 #kt-sidebar .kt-sidebar-user {
@@ -371,7 +328,57 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user-name {
 }
 
 /* ============================
-   14. MOBILE
+   14. SIDEBAR TOGGLE (CHEVRON)
+   ============================ */
+
+#kt-sidebar .kt-sidebar-toggle {
+    position: absolute !important;
+    right: -14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+    border: 1px solid #e8e8e8 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #687178 !important;
+    z-index: 1022 !important;
+    transition: all 0.15s !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+#kt-sidebar .kt-sidebar-toggle .octicon {
+    font-size: 12px !important;
+    line-height: 1 !important;
+}
+
+#kt-sidebar .kt-sidebar-toggle:hover {
+    background: #f4f5f6 !important;
+    color: #1a1a1a !important;
+    border-color: #d1d5db !important;
+}
+
+#kt-sidebar .kt-sidebar-toggle .kt-sidebar-toggle-label {
+    display: none !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-toggle {
+    right: auto !important;
+    left: -12px !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-toggle .octicon {
+    transform: rotate(180deg) !important;
+}
+
+/* ============================
+   15. MOBILE
    ============================ */
 
 .kt-sidebar-overlay {

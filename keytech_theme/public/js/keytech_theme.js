@@ -44,12 +44,9 @@ keytech_theme = {
 
 		const $sidebar = $(`
 			<aside id="kt-sidebar">
-				<div class="kt-sidebar-header">
-					<span class="kt-sidebar-title"></span>
-					<button type="button" class="kt-sidebar-toggle" aria-label="Toggle sidebar">
-						${frappe.utils.icon("menu", "sm")}
-					</button>
-				</div>
+				<button type="button" class="kt-sidebar-toggle" aria-label="Toggle sidebar">
+					<i class="octicon octicon-chevron-left"></i>
+				</button>
 				<div class="kt-sidebar-body">
 					<ul class="kt-sidebar-menu"></ul>
 				</div>
@@ -59,7 +56,6 @@ keytech_theme = {
 			</aside>
 		`);
 
-		$sidebar.find(".kt-sidebar-title").text(frappe.boot.sitename || "Menu");
 		$sidebar.find(".kt-sidebar-user").append(frappe.avatar(frappe.session.user, "avatar"));
 		$sidebar.find(".kt-sidebar-user").append(
 			$("<span>").addClass("kt-sidebar-user-name").text(frappe.user_info().fullname)
@@ -208,10 +204,9 @@ keytech_theme = {
 			e.stopPropagation();
 			$("body").toggleClass("kt-sidebar-collapsed");
 			$("body").toggleClass("kt-sidebar-expanded");
-			localStorage.setItem(
-				"kt_sidebar_collapsed",
-				$("body").hasClass("kt-sidebar-collapsed") ? "1" : "0"
-			);
+			const collapsed = $("body").hasClass("kt-sidebar-collapsed");
+			localStorage.setItem("kt_sidebar_collapsed", collapsed ? "1" : "0");
+			this.update_toggle_icon(collapsed);
 		});
 
 		$(document).on("click", "#kt-sidebar .kt-sidebar-link", (e) => {
@@ -237,10 +232,15 @@ keytech_theme = {
 		});
 	},
 
+	update_toggle_icon() {
+		// Icon rotation is handled by CSS (body.kt-sidebar-collapsed)
+	},
+
 	apply_toggle_state() {
 		const collapsed = localStorage.getItem("kt_sidebar_collapsed") === "1";
 		$("body").toggleClass("kt-sidebar-collapsed", collapsed);
 		$("body").toggleClass("kt-sidebar-expanded", !collapsed);
+		this.update_toggle_icon(collapsed);
 	},
 };
 

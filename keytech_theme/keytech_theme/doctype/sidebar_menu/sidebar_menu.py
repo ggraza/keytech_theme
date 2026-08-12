@@ -9,6 +9,13 @@ class SidebarMenu(NestedSet):
 	def validate(self):
 		if self.is_group and self.action == "Link":
 			frappe.throw("Group items cannot use Link action. Use Route instead.")
+
+		if self.action == "Link" and not self.link_doctype:
+			frappe.throw("Please select a DocType when action is Link.")
+
+		if self.action != "Link":
+			self.link_doctype = ""
+
 		if not self.is_group and self.route_or_link and self.action == "Route":
 			route = self.route_or_link
 			if not route.startswith("/app") and not route.startswith("http"):

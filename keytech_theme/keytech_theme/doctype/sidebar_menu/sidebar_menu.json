@@ -5,23 +5,24 @@
  "creation": "2026-08-11 19:59:49.894173",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": [
-  "section_break_xjjh",
-  "lft",
-  "rgt",
-  "is_group",
-  "old_parent",
-  "parent_sidebar_menu",
-  "menu_label",
-  "icon",
-  "action",
-  "route_or_link",
-  "column_break_opts",
-  "sort_order",
-  "is_visible",
-  "indicator_color",
-  "badge"
- ],
+  "field_order": [
+   "section_break_xjjh",
+   "lft",
+   "rgt",
+   "old_parent",
+   "is_group",
+   "parent_sidebar_menu",
+   "menu_label",
+   "icon",
+   "action",
+   "link_doctype",
+   "route_or_link",
+   "column_break_opts",
+   "sort_order",
+   "is_visible",
+   "indicator_color",
+   "badge"
+  ],
  "fields": [
   {
    "fieldname": "section_break_xjjh",
@@ -35,25 +36,27 @@
    "no_copy": 1,
    "read_only": 1
   },
-  {
-   "fieldname": "rgt",
-   "fieldtype": "Int",
-   "hidden": 1,
-   "label": "Right",
-   "no_copy": 1,
-   "read_only": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_group",
+   {
+    "fieldname": "rgt",
+    "fieldtype": "Int",
+    "hidden": 1,
+    "label": "Right",
+    "no_copy": 1,
+    "read_only": 1
+   },
+   {
+    "fieldname": "old_parent",
+    "fieldtype": "Link",
+    "hidden": 1,
+    "label": "Old Parent",
+    "options": "Sidebar Menu",
+    "read_only": 1
+   },
+   {
+    "default": "0",
+    "fieldname": "is_group",
    "fieldtype": "Check",
    "label": "Is Group"
-  },
-  {
-   "fieldname": "old_parent",
-   "fieldtype": "Link",
-   "label": "Old Parent",
-   "options": "Sidebar Menu"
   },
   {
    "fieldname": "parent_sidebar_menu",
@@ -71,13 +74,12 @@
    "reqd": 1,
    "unique": 1
   },
-  {
-   "fieldname": "icon",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Icon",
-   "options": "octicon octicon-home\nocticon octicon-person\nocticon octicon-package\nocticon octicon-file-text\nocticon octicon-graph\nocticon octicon-gear\nocticon octicon-tag\nocticon octicon-calendar\nocticon octicon-checklist\nocticon octicon-rocket\nocticon octicon-people\nocticon octicon-shield\nocticon octicon-bell\nocticon octicon-database\nocticon octicon-tools\nocticon octicon-light-bulb\nocticon octicon-organization\nocticon octicon-milestone\nocticon octicon-project\nocticon octicon-tasklist"
-  },
+   {
+    "fieldname": "icon",
+    "fieldtype": "Data",
+    "in_list_view": 1,
+    "label": "Icon"
+   },
   {
    "fieldname": "action",
    "fieldtype": "Select",
@@ -87,12 +89,19 @@
    "reqd": 1
   },
   {
-   "fieldname": "route_or_link",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Route or Link",
-   "reqd": 1
+   "depends_on": "eval:doc.action == 'Link'",
+   "fieldname": "link_doctype",
+   "fieldtype": "Link",
+   "label": "Link DocType",
+   "options": "DocType"
   },
+   {
+    "fieldname": "route_or_link",
+    "fieldtype": "Data",
+    "in_list_view": 1,
+    "label": "Route or Link",
+    "reqd": 1
+   },
   {
    "fieldname": "column_break_opts",
    "fieldtype": "Column Break"
@@ -126,7 +135,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2026-08-11 22:11:54.169870",
+ "modified": "2026-08-12 10:00:00.000000",
  "modified_by": "Administrator",
  "module": "Keytech Theme",
  "name": "Sidebar Menu",
