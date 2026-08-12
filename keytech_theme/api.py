@@ -20,11 +20,21 @@ def get_sidebar_menu():
 			"parent_sidebar_menu",
 			"is_group",
 			"sort_order",
-			"indicator_color",
 			"badge",
 		],
 		order_by="lft asc",
 	)
+
+	for item in items:
+		if item.get("action") == "Link" and item.get("route_or_link"):
+			doctype = item["route_or_link"]
+			try:
+				if frappe.db.exists("DocType", doctype):
+					item["badge"] = frappe.db.count(doctype)
+				else:
+					item["badge"] = None
+			except Exception:
+				item["badge"] = None
 
 	return items
 

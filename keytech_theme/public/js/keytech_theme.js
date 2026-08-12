@@ -121,9 +121,6 @@ keytech_theme = {
 		$link.append($("<span>").addClass("kt-sidebar-icon").html(this.icon_html(node.icon)));
 		$link.append($("<span>").addClass("kt-sidebar-label").text(node.menu_label || node.name));
 
-		if (node.indicator_color) {
-			$link.append($("<span>").addClass("kt-sidebar-indicator " + node.indicator_color.toLowerCase()));
-		}
 		if (node.badge) {
 			$link.append($("<span>").addClass("kt-sidebar-badge").text(node.badge));
 		}

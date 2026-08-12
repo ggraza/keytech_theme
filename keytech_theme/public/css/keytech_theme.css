@@ -175,8 +175,7 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-icon {
 
 body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-label,
 body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-chevron,
-body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-badge,
-body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-badge {
     display: none !important;
 }
 
@@ -192,23 +191,7 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
 }
 
 /* ============================
-   9. SIDEBAR INDICATOR
-   ============================ */
-
-#kt-sidebar .kt-sidebar-indicator {
-    width: 8px !important;
-    height: 8px !important;
-    border-radius: 50% !important;
-    flex-shrink: 0 !important;
-}
-
-#kt-sidebar .kt-sidebar-indicator.green { background-color: #28a745 !important; }
-#kt-sidebar .kt-sidebar-indicator.orange { background-color: #f0ad4e !important; }
-#kt-sidebar .kt-sidebar-indicator.red { background-color: #dc3545 !important; }
-#kt-sidebar .kt-sidebar-indicator.blue { background-color: #2490ef !important; }
-
-/* ============================
-   10. SIDEBAR BADGES
+   9. SIDEBAR BADGES
    ============================ */
 
 #kt-sidebar .kt-sidebar-badge {
