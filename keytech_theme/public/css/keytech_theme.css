@@ -58,13 +58,13 @@ body.kt-sidebar-collapsed #body {
     bottom: 0 !important;
     width: 240px !important;
     height: calc(100vh - var(--navbar-height, 48px)) !important;
-    background: #fff !important;
-    border-right: 1px solid #e8e8e8 !important;
+    background: var(--bg-color) !important;
+    border-right: 1px solid var(--border-color) !important;
     z-index: 1020 !important;
     display: flex !important;
     flex-direction: column !important;
     overflow: visible !important;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04) !important;
+    box-shadow: var(--shadow-base) !important;
     margin: 0 !important;
     padding: 0 !important;
     border-radius: 0 !important;
@@ -90,7 +90,7 @@ body.kt-sidebar-collapsed #kt-sidebar {
 }
 
 #kt-sidebar .kt-sidebar-body::-webkit-scrollbar-thumb {
-    background: #d1d8dd !important;
+    background: var(--scrollbar-thumb-color) !important;
     border-radius: 4px !important;
 }
 
@@ -114,7 +114,7 @@ body.kt-sidebar-collapsed #kt-sidebar {
     display: flex !important;
     align-items: center !important;
     padding: 10px 16px !important;
-    color: #687178 !important;
+    color: var(--text-muted) !important;
     text-decoration: none !important;
     font-size: 13px !important;
     font-weight: 500 !important;
@@ -129,14 +129,14 @@ body.kt-sidebar-collapsed #kt-sidebar {
 }
 
 #kt-sidebar .kt-sidebar-link:hover {
-    background: #f4f5f6 !important;
-    color: #1a1a1a !important;
+    background: var(--fg-hover-color) !important;
+    color: var(--text-color) !important;
     text-decoration: none !important;
 }
 
 #kt-sidebar .kt-sidebar-item.active > .kt-sidebar-link {
-    background: #f0f4ff !important;
-    color: #2490ef !important;
+    background: var(--bg-light-blue) !important;
+    color: var(--text-on-light-blue) !important;
 }
 
 #kt-sidebar .kt-sidebar-item.active > .kt-sidebar-link::before {
@@ -147,7 +147,7 @@ body.kt-sidebar-collapsed #kt-sidebar {
     transform: translateY(-50%) !important;
     width: 3px !important;
     height: 20px !important;
-    background: #2490ef !important;
+    background: var(--bg-blue) !important;
     border-radius: 0 3px 3px 0 !important;
 }
 
@@ -219,8 +219,8 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
     height: 20px !important;
     padding: 0 6px !important;
     border-radius: 10px !important;
-    background: #2490ef !important;
-    color: white !important;
+    background: var(--bg-blue) !important;
+    color: var(--text-on-blue) !important;
     font-size: 11px !important;
     font-weight: 600 !important;
     line-height: 1 !important;
@@ -239,7 +239,7 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
     height: 16px !important;
     flex-shrink: 0 !important;
     transition: transform 0.2s !important;
-    color: #687178 !important;
+    color: var(--text-muted) !important;
 }
 
 #kt-sidebar .kt-sidebar-group.expanded > .kt-sidebar-link .kt-sidebar-chevron {
@@ -285,7 +285,7 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
    ============================ */
 
 #kt-sidebar .kt-sidebar-footer {
-    border-top: 1px solid #e8e8e8 !important;
+    border-top: 1px solid var(--border-color) !important;
     padding: 8px 12px !important;
     flex-shrink: 0 !important;
     display: flex !important;
@@ -317,7 +317,7 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-indicator {
 #kt-sidebar .kt-sidebar-user-name {
     font-size: 13px !important;
     font-weight: 500 !important;
-    color: #1a1a1a !important;
+    color: var(--text-color) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -339,14 +339,14 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user-name {
     width: 28px !important;
     height: 28px !important;
     border-radius: 50% !important;
-    background: #fff !important;
-    border: 1px solid #e8e8e8 !important;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    background: var(--bg-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-base) !important;
     cursor: pointer !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    color: #687178 !important;
+    color: var(--text-muted) !important;
     z-index: 1022 !important;
     transition: all 0.15s !important;
     padding: 0 !important;
@@ -359,9 +359,9 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user-name {
 }
 
 #kt-sidebar .kt-sidebar-toggle:hover {
-    background: #f4f5f6 !important;
-    color: #1a1a1a !important;
-    border-color: #d1d5db !important;
+    background: var(--fg-hover-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--dark-border-color) !important;
 }
 
 #kt-sidebar .kt-sidebar-toggle .kt-sidebar-toggle-label {

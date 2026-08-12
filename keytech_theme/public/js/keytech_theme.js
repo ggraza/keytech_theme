@@ -100,7 +100,7 @@ keytech_theme = {
 		if (node.is_group) {
 			$li.addClass("kt-sidebar-group");
 
-			const $link = $("<a>").addClass("kt-sidebar-link").attr("href", "#").attr("data-name", node.name).attr("data-action", "group");
+			const $link = $("<a>").addClass("kt-sidebar-link").attr("href", "#").attr("data-name", node.name).attr("data-action", "group").attr("data-route", node.route_or_link || "");
 			$link.append($("<span>").addClass("kt-sidebar-icon").html(this.icon_html(node.icon)));
 			$link.append($("<span>").addClass("kt-sidebar-label").text(node.menu_label || node.name));
 			$link.append($("<span>").addClass("kt-sidebar-chevron").html(frappe.utils.icon("right", "xs")));
@@ -217,6 +217,14 @@ keytech_theme = {
 			if (action === "group") {
 				e.preventDefault();
 				$(`#kt-sidebar .kt-sidebar-group[data-name="${name}"]`).toggleClass("expanded");
+				const route = $link.data("route");
+				if (route && route !== "#") {
+					if (route.startsWith("http")) {
+						window.open(route, "_blank");
+					} else {
+						this.navigate("Route", route);
+					}
+				}
 				return;
 			}
 
