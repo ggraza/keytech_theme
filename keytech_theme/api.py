@@ -6,7 +6,11 @@ import frappe
 
 @frappe.whitelist()
 def get_sidebar_menu():
-	"""Return Sidebar Menu items for the custom desk sidebar."""
+	"""Return Sidebar Menu items for the custom desk sidebar.
+
+	Link-type items are filtered by DocType read permission.
+	Route-type items are always shown.
+	"""
 	entries = frappe.get_all(
 		"Sidebar Menu",
 		filters={"is_visible": 1},
@@ -16,6 +20,7 @@ def get_sidebar_menu():
 			"icon",
 			"action",
 			"route_or_link",
+			"link_doctype",
 			"parent_sidebar_menu",
 			"is_group",
 			"sort_order",
@@ -24,8 +29,28 @@ def get_sidebar_menu():
 		order_by="lft asc",
 	)
 
-	items = sort_menu_items(entries)
+	# --- filter Link items by DocType read permission ---
+	perm_cache = {}
 
+	def can_read(dt):
+		if not dt:
+			return False
+		if dt not in perm_cache:
+			try:
+				perm_cache[dt] = frappe.has_permission(dt, "read")
+			except Exception:
+				perm_cache[dt] = False
+		return perm_cache[dt]
+
+	visible = []
+	for item in entries:
+		if item.get("action") == "Link" and not can_read(item.get("link_doctype")):
+			continue
+		visible.append(item)
+
+	items = sort_menu_items(visible)
+
+	# --- badge counts ---
 	for item in items:
 		if item.get("action") == "Link" and item.get("route_or_link"):
 			doctype = item["route_or_link"]
@@ -36,6 +61,20 @@ def get_sidebar_menu():
 					item["badge"] = None
 			except Exception:
 				item["badge"] = None
+
+	# --- hide groups whose children are all hidden ---
+	hidden_names = {item["name"] for item in entries if item not in visible}
+	if hidden_names:
+		by_name = {item["name"]: item for item in items}
+		for item in list(items):
+			if item.get("is_group") and item["name"] in by_name:
+				children = [
+					c
+					for c in items
+					if c.get("parent_sidebar_menu") == item["name"] and c["name"] != item["name"]
+				]
+				if children and all(c["name"] in hidden_names for c in children):
+					items = [i for i in items if i["name"] != item["name"]]
 
 	return items
 
