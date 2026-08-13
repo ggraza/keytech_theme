@@ -25,8 +25,8 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/keytech_theme/css/keytech_theme.css?v=2"
-app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=2"
+app_include_css = "/assets/keytech_theme/css/keytech_theme.css?v=3"
+app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=4"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/keytech_theme/css/keytech_theme.css"
@@ -137,13 +137,12 @@ app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=2"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sidebar Menu": {
+		"on_update": "keytech_theme.api.trigger_sidebar_menu_refresh",
+		"on_trash": "keytech_theme.api.trigger_sidebar_menu_refresh",
+	}
+}
 
 # Scheduled Tasks
 # ---------------

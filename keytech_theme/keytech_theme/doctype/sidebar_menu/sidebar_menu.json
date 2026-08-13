@@ -62,6 +62,7 @@
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
    "label": "Parent Sidebar Menu",
+   "link_filters": "[[\"Sidebar Menu\",\"parent_sidebar_menu\",\"is\",\"not set\"]]",
    "options": "Sidebar Menu"
   },
   {
@@ -75,8 +76,7 @@
   },
   {
    "fieldname": "icon",
-   "fieldtype": "Data",
-   "in_list_view": 1,
+   "fieldtype": "Icon",
    "label": "Icon"
   },
   {
@@ -131,7 +131,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2026-08-12 13:29:33.167135",
+ "modified": "2026-08-13 12:36:43.787934",
  "modified_by": "Administrator",
  "module": "Keytech Theme",
  "name": "Sidebar Menu",

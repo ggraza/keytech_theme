@@ -306,6 +306,16 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-badge {
     text-overflow: ellipsis !important;
 }
 
+#kt-sidebar .kt-sidebar-user .avatar-medium {
+    width: 30px !important;
+    height: 30px !important;
+    flex-shrink: 0 !important;
+}
+
+body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user {
+    justify-content: center !important;
+}
+
 body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user-name {
     display: none !important;
 }
@@ -349,11 +359,6 @@ body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-user-name {
 
 #kt-sidebar .kt-sidebar-toggle .kt-sidebar-toggle-label {
     display: none !important;
-}
-
-body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-toggle {
-    right: auto !important;
-    left: -12px !important;
 }
 
 body.kt-sidebar-collapsed #kt-sidebar .kt-sidebar-toggle .octicon {

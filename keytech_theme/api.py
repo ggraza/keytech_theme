@@ -2,13 +2,12 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe import _
 
 
 @frappe.whitelist()
 def get_sidebar_menu():
 	"""Return Sidebar Menu items for the custom desk sidebar."""
-	items = frappe.get_all(
+	entries = frappe.get_all(
 		"Sidebar Menu",
 		filters={"is_visible": 1},
 		fields=[
@@ -25,6 +24,8 @@ def get_sidebar_menu():
 		order_by="lft asc",
 	)
 
+	items = sort_menu_items(entries)
+
 	for item in items:
 		if item.get("action") == "Link" and item.get("route_or_link"):
 			doctype = item["route_or_link"]
@@ -37,6 +38,40 @@ def get_sidebar_menu():
 				item["badge"] = None
 
 	return items
+
+
+def sort_menu_items(entries):
+	"""Flatten the menu tree so siblings are ordered by sort_order.
+
+	Siblings sort by sort_order ascending (fallback to name for stability);
+	children keep their own 1, 2, 3... relative to their parent only.
+	"""
+	grouped = {}
+	for entry in entries:
+		parent = entry.get("parent_sidebar_menu") or ""
+		grouped.setdefault(parent, []).append(entry)
+
+	def order_siblings(children):
+		return sorted(children, key=lambda c: (c.get("sort_order") or 0, c.get("name") or ""))
+
+	def walk(parent):
+		result = []
+		for child in order_siblings(grouped.get(parent, [])):
+			result.append(child)
+			if child.get("is_group"):
+				result.extend(walk(child.get("name")))
+		return result
+
+	return walk("")
+
+
+def trigger_sidebar_menu_refresh(doc=None, method=None):
+	"""Notify the current user's desk sessions to re-render the custom sidebar."""
+	frappe.publish_realtime(
+		"keytech_theme:sidebar_updated",
+		user=frappe.session.user,
+		after_commit=True,
+	)
 
 
 def setup_test_data():

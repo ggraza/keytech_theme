@@ -58,7 +58,7 @@
     <div class="kt-sidebar-footer">
         <div class="kt-sidebar-user">
             <span class="kt-sidebar-user-avatar">
-                {{ frappe.get_gravatar_url(frappe.session.user) }}
+                <img src="{{ frappe.db.get_value("User", frappe.session.user, "user_image") or frappe.get_gravatar_url(frappe.session.user) }}" alt="{{ frappe.session.user }}">
             </span>
             <span class="kt-sidebar-user-name">{{ frappe.db.get_value("User", frappe.session.user, "full_name") or frappe.session.user }}</span>
         </div>

@@ -17,6 +17,10 @@ keytech_theme = {
 			frappe.router.on("change", () => this.set_active());
 		}
 
+		if (frappe.realtime) {
+			frappe.realtime.on("keytech_theme:sidebar_updated", () => this.reload_sidebar());
+		}
+
 		// app_ready fires synchronously inside Application.startup(); depending on
 		// $(document).ready handler order it may fire before this listener is bound.
 		if (frappe.app) {
@@ -38,6 +42,18 @@ keytech_theme = {
 		}
 	},
 
+	async reload_sidebar() {
+		if (this._reloading) return;
+		this._reloading = true;
+
+		try {
+			this._fetched = false;
+			await this.fetch_and_render();
+		} finally {
+			this._reloading = false;
+		}
+	},
+
 	build_sidebar_container() {
 		const $existing = $("#kt-sidebar");
 		if ($existing.length) return $existing;
@@ -56,7 +72,7 @@ keytech_theme = {
 			</aside>
 		`);
 
-		$sidebar.find(".kt-sidebar-user").append(frappe.avatar(frappe.session.user, "avatar"));
+		$sidebar.find(".kt-sidebar-user").append(frappe.avatar(frappe.session.user, "avatar-medium"));
 		$sidebar.find(".kt-sidebar-user").append(
 			$("<span>").addClass("kt-sidebar-user-name").text(frappe.user_info().fullname)
 		);
