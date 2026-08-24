@@ -25,7 +25,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/keytech_theme/css/keytech_theme.css?v=14"
+app_include_css = "/assets/keytech_theme/css/keytech_theme.css?v=15"
 app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=9"
 
 # include js, css files in header of web template

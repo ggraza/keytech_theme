@@ -38,6 +38,12 @@ body.kt-sidebar-collapsed #body {
     margin-left: 60px !important;
 }
 
+/* Navbar: full width */
+.navbar .container {
+    max-width: none !important;
+    width: 100% !important;
+}
+
 /* Override Frappe's .container max-width inside #body */
 #body .container {
     max-width: none !important;
