@@ -16,11 +16,10 @@
 }
 
 /* ============================
-   2. FIX MAIN LAYOUT
+   2. FULL WIDTH LAYOUT
+   Remove Frappe container max-width constraints
    ============================ */
 
-/* main-section wraps navbar (<header>), #body and footer.
-   Keep navbar full-width; only offset the content (#body). */
 .main-section {
     min-height: 100vh !important;
     display: flex !important;
@@ -31,13 +30,33 @@
     flex: 1 !important;
 }
 
-/* Offset content when our fixed sidebar is visible */
 body.kt-sidebar-expanded #body {
     margin-left: 240px !important;
 }
 
 body.kt-sidebar-collapsed #body {
     margin-left: 60px !important;
+}
+
+/* Override Frappe's .container max-width inside #body */
+#body .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.page-container,
+.page-body,
+.layout-main-section,
+.layout-main-section-wrapper {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* Workspace page: full width */
+[data-page-route="Workspaces"] .layout-main-section-wrapper {
+    margin-top: 0 !important;
 }
 
 @media (max-width: 768px) {
