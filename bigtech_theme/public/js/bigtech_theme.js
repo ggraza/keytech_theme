@@ -1,9 +1,9 @@
 // Copyright (c) 2026, Keytech and contributors
 // For license information, please see license.txt
 
-frappe.provide("keytech_theme");
+frappe.provide("bigtech_theme");
 
-keytech_theme = {
+bigtech_theme = {
 	_initialized: false,
 	_fetched: false,
 
@@ -21,7 +21,7 @@ keytech_theme = {
 		}
 
 		if (frappe.realtime) {
-			frappe.realtime.on("keytech_theme:sidebar_updated", () => this.reload_sidebar());
+			frappe.realtime.on("bigtech_theme:sidebar_updated", () => this.reload_sidebar());
 		}
 
 		// app_ready fires synchronously inside Application.startup(); depending on
@@ -38,10 +38,10 @@ keytech_theme = {
 		this._fetched = true;
 
 		try {
-			const items = await frappe.xcall("keytech_theme.api.get_sidebar_menu");
+			const items = await frappe.xcall("bigtech_theme.api.get_sidebar_menu");
 			this.render_sidebar(items || []);
 		} catch (e) {
-			console.error("keytech_theme: failed to load sidebar menu", e);
+			console.error("bigtech_theme: failed to load sidebar menu", e);
 		}
 	},
 
@@ -311,5 +311,5 @@ keytech_theme = {
 };
 
 $(document).ready(function () {
-	keytech_theme.init();
+	bigtech_theme.init();
 });

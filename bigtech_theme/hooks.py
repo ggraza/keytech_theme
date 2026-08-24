@@ -1,5 +1,5 @@
-app_name = "keytech_theme"
-app_title = "Keytech Theme"
+app_name = "bigtech_theme"
+app_title = "Bigtech Theme"
 app_publisher = "Keytech"
 app_description = "Theme v15"
 app_email = "info@keytech.co.id"
@@ -13,11 +13,11 @@ app_license = "mit"
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "keytech_theme",
-# 		"logo": "/assets/keytech_theme/logo.png",
-# 		"title": "Keytech Theme",
-# 		"route": "/keytech_theme",
-# 		"has_permission": "keytech_theme.api.permission.has_app_permission"
+# 		"name": "bigtech_theme",
+# 		"logo": "/assets/bigtech_theme/logo.png",
+# 		"title": "Bigtech Theme",
+# 		"route": "/bigtech_theme",
+# 		"has_permission": "bigtech_theme.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -25,15 +25,15 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/keytech_theme/css/keytech_theme.css?v=15"
-app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=9"
+app_include_css = "/assets/bigtech_theme/css/bigtech_theme.css?v=15"
+app_include_js = "/assets/bigtech_theme/js/bigtech_theme.js?v=9"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/keytech_theme/css/keytech_theme.css"
-# web_include_js = "/assets/keytech_theme/js/keytech_theme.js"
+# web_include_css = "/assets/bigtech_theme/css/bigtech_theme.css"
+# web_include_js = "/assets/bigtech_theme/js/bigtech_theme.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "keytech_theme/public/scss/website"
+# website_theme_scss = "bigtech_theme/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -51,7 +51,7 @@ app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=9"
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "keytech_theme/public/icons.svg"
+# app_include_icons = "bigtech_theme/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -75,43 +75,43 @@ app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=9"
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "keytech_theme.utils.jinja_methods",
-# 	"filters": "keytech_theme.utils.jinja_filters"
+# 	"methods": "bigtech_theme.utils.jinja_methods",
+# 	"filters": "bigtech_theme.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "keytech_theme.install.before_install"
-# after_install = "keytech_theme.install.after_install"
+# before_install = "bigtech_theme.install.before_install"
+# after_install = "bigtech_theme.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "keytech_theme.uninstall.before_uninstall"
-# after_uninstall = "keytech_theme.uninstall.after_uninstall"
+# before_uninstall = "bigtech_theme.uninstall.before_uninstall"
+# after_uninstall = "bigtech_theme.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "keytech_theme.utils.before_app_install"
-# after_app_install = "keytech_theme.utils.after_app_install"
+# before_app_install = "bigtech_theme.utils.before_app_install"
+# after_app_install = "bigtech_theme.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "keytech_theme.utils.before_app_uninstall"
-# after_app_uninstall = "keytech_theme.utils.after_app_uninstall"
+# before_app_uninstall = "bigtech_theme.utils.before_app_uninstall"
+# after_app_uninstall = "bigtech_theme.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "keytech_theme.notifications.get_notification_config"
+# notification_config = "bigtech_theme.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -139,8 +139,8 @@ app_include_js = "/assets/keytech_theme/js/keytech_theme.js?v=9"
 
 doc_events = {
 	"Sidebar Menu": {
-		"on_update": "keytech_theme.api.trigger_sidebar_menu_refresh",
-		"on_trash": "keytech_theme.api.trigger_sidebar_menu_refresh",
+		"on_update": "bigtech_theme.api.trigger_sidebar_menu_refresh",
+		"on_trash": "bigtech_theme.api.trigger_sidebar_menu_refresh",
 	}
 }
 
@@ -149,38 +149,38 @@ doc_events = {
 
 # scheduler_events = {
 # 	"all": [
-# 		"keytech_theme.tasks.all"
+# 		"bigtech_theme.tasks.all"
 # 	],
 # 	"daily": [
-# 		"keytech_theme.tasks.daily"
+# 		"bigtech_theme.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"keytech_theme.tasks.hourly"
+# 		"bigtech_theme.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"keytech_theme.tasks.weekly"
+# 		"bigtech_theme.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"keytech_theme.tasks.monthly"
+# 		"bigtech_theme.tasks.monthly"
 # 	],
 # }
 
 # Testing
 # -------
 
-# before_tests = "keytech_theme.install.before_tests"
+# before_tests = "bigtech_theme.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 # Note: We intentionally do NOT override frappe.desk.desktop.get_workspace_sidebar_items.
 # We keep Frappe's default workspace routing intact and render a fully custom
-# desk sidebar (#kt-sidebar) driven by keytech_theme.api.get_sidebar_menu.
+# desk sidebar (#kt-sidebar) driven by bigtech_theme.api.get_sidebar_menu.
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "keytech_theme.task.get_dashboard_data"
+# 	"Task": "bigtech_theme.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -194,13 +194,13 @@ doc_events = {
 
 # Request Events
 # ----------------
-# before_request = ["keytech_theme.utils.before_request"]
-# after_request = ["keytech_theme.utils.after_request"]
+# before_request = ["bigtech_theme.utils.before_request"]
+# after_request = ["bigtech_theme.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["keytech_theme.utils.before_job"]
-# after_job = ["keytech_theme.utils.after_job"]
+# before_job = ["bigtech_theme.utils.before_job"]
+# after_job = ["bigtech_theme.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -230,7 +230,7 @@ doc_events = {
 # --------------------------------
 
 # auth_hooks = [
-# 	"keytech_theme.auth.validate"
+# 	"bigtech_theme.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.

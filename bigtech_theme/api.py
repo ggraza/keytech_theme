@@ -107,7 +107,7 @@ def sort_menu_items(entries):
 def trigger_sidebar_menu_refresh(doc=None, method=None):
 	"""Notify the current user's desk sessions to re-render the custom sidebar."""
 	frappe.publish_realtime(
-		"keytech_theme:sidebar_updated",
+		"bigtech_theme:sidebar_updated",
 		user=frappe.session.user,
 		after_commit=True,
 	)
