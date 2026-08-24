@@ -14,7 +14,10 @@ keytech_theme = {
 		this.init_toggle();
 
 		if (frappe.router) {
-			frappe.router.on("change", () => this.set_active());
+			frappe.router.on("change", () => {
+				this.set_active();
+				this.init_form_sidebar();
+			});
 		}
 
 		if (frappe.realtime) {
@@ -195,6 +198,48 @@ keytech_theme = {
 				$link.closest(".kt-sidebar-group").addClass("expanded");
 			}
 		});
+	},
+
+	init_form_sidebar() {
+		const expanded = localStorage.getItem("kt_form_sidebar_expanded") === "1";
+
+		// Wait for sidebar toggle button to be rendered (form loads async)
+		const tryToggle = (retries) => {
+			const $toggleBtn = $(".sidebar-toggle-btn");
+			if (!$toggleBtn.length) {
+				if (retries > 0) setTimeout(() => tryToggle(retries - 1), 200);
+				return;
+			}
+
+			const $layoutSide = $(".layout-side-section");
+			const isCurrentlyExpanded = $layoutSide.length && $layoutSide.is(":visible") && !$layoutSide.hasClass("hide-sidebar");
+
+			if (!expanded && isCurrentlyExpanded) {
+				$toggleBtn[0].click();
+			} else if (expanded && !isCurrentlyExpanded) {
+				$toggleBtn[0].click();
+			}
+		};
+
+		setTimeout(() => tryToggle(10), 300);
+
+		// Add "Show Sidebar" to form ⋯ menu (once per form)
+		if (frappe.cur_frm) {
+			const formId = frappe.cur_frm.doctype + ":" + frappe.cur_frm.docname;
+			if (this._last_form_id !== formId) {
+				this._last_form_id = formId;
+				frappe.cur_frm.page.add_menu_item(
+					__("Show Sidebar"),
+					() => {
+						const $btn = $(".sidebar-toggle-btn");
+						if ($btn.length) $btn[0].click();
+						const isVis = $(".layout-side-section").length && $(".layout-side-section").is(":visible") && !$(".layout-side-section").hasClass("hide-sidebar");
+						localStorage.setItem("kt_form_sidebar_expanded", isVis ? "1" : "0");
+					},
+					true
+				);
+			}
+		}
 	},
 
 	matches_route(action, item_route, sub_path, route) {

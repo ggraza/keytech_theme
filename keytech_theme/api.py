@@ -53,7 +53,7 @@ def get_sidebar_menu():
 	# --- badge counts ---
 	for item in items:
 		if item.get("action") == "Link" and item.get("route_or_link"):
-			doctype = item["route_or_link"]
+			doctype = item["route_or_link"].strip().lstrip("/")
 			try:
 				if frappe.db.exists("DocType", doctype):
 					item["badge"] = frappe.db.count(doctype)
